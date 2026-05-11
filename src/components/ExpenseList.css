@@ -1,0 +1,61 @@
+.table-responsive {
+  overflow-x: auto;
+}
+
+.badge {
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.badge-income {
+  background: #d4edda;
+  color: #155724;
+}
+
+.badge-expense {
+  background: #f8d7da;
+  color: #721c24;
+}
+
+.amount {
+  font-weight: 600;
+  font-size: 16px;
+}
+
+.amount-income {
+  color: #27ae60;
+}
+
+.amount-expense {
+  color: #e74c3c;
+}
+
+.action-buttons {
+  display: flex;
+  gap: 8px;
+}
+
+.btn-icon {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 18px;
+  padding: 4px 8px;
+  border-radius: 4px;
+  transition: background 0.2s;
+}
+
+.btn-icon:hover {
+  background: #f0f0f0;
+}
+
+.btn-edit:hover {
+  background: #e3f2fd;
+}
+
+.btn-delete:hover {
+  background: #ffebee;
+}
