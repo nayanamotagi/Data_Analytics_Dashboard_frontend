@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import './ExpenseModal.css';
 
+const API_URL = import.meta.env.VITE_API_URL;
+
 const ExpenseModal = ({ expense, onClose }) => {
   const [formData, setFormData] = useState({
     type: 'expense',
@@ -47,9 +49,9 @@ const ExpenseModal = ({ expense, onClose }) => {
 
     try {
       if (expense) {
-        await axios.put(`/api/expenses/${expense.id}`, formData);
+        await axios.put(`${API_URL}/expenses/${expense.id}`, formData);
       } else {
-        await axios.post('/api/expenses', formData);
+        await axios.post(`${API_URL}/expenses`, formData);
       }
       onClose();
     } catch (error) {

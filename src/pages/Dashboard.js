@@ -2,6 +2,8 @@ import React, { useState, useEffect, useCallback } from 'react';
 import { useAuth } from '../context/AuthContext';
 import axios from 'axios';
 import ExpenseModal from '../components/ExpenseModal';
+
+const API_URL = import.meta.env.VITE_API_URL;
 import ExpenseList from '../components/ExpenseList';
 import StatsCards from '../components/StatsCards';
 import Charts from '../components/Charts';
@@ -26,14 +28,14 @@ const Dashboard = () => {
     try {
       setLoading(true);
       const [expensesRes, analyticsRes, predictionsRes] = await Promise.all([
-        axios.get('/api/expenses'),
-        axios.get('/api/analytics', {
+        axios.get(`${API_URL}/expenses`),
+        axios.get(`${API_URL}/analytics`, {
           params: {
             startDate: dateRange.startDate,
             endDate: dateRange.endDate,
           },
         }),
-        axios.get('/api/predictions'),
+        axios.get(`${API_URL}/predictions`),
       ]);
 
       setExpenses(expensesRes.data);
@@ -63,7 +65,7 @@ const Dashboard = () => {
   const handleDeleteExpense = async (id) => {
     if (window.confirm('Are you sure you want to delete this transaction?')) {
       try {
-        await axios.delete(`/api/expenses/${id}`);
+        await axios.delete(`${API_URL}/expenses/${id}`);
         fetchData();
       } catch (error) {
         console.error('Error deleting expense:', error);
@@ -80,7 +82,7 @@ const Dashboard = () => {
 
   const handleExportCSV = async () => {
     try {
-      const response = await axios.get('/api/export/csv', {
+      const response = await axios.get(`${API_URL}/export/csv`, {
         params: {
           startDate: dateRange.startDate,
           endDate: dateRange.endDate,
@@ -103,7 +105,7 @@ const Dashboard = () => {
 
   const handleExportPDF = async () => {
     try {
-      const response = await axios.get('/api/export/pdf', {
+      const response = await axios.get(`${API_URL}/export/pdf`, {
         params: {
           startDate: dateRange.startDate,
           endDate: dateRange.endDate,
