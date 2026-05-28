@@ -2,14 +2,14 @@ import React, { useState, useEffect, useCallback } from 'react';
 import { useAuth } from '../context/AuthContext';
 import axios from 'axios';
 import ExpenseModal from '../components/ExpenseModal';
-
-const API_URL = import.meta.env.VITE_API_URL;
 import ExpenseList from '../components/ExpenseList';
 import StatsCards from '../components/StatsCards';
 import Charts from '../components/Charts';
 import DateFilter from '../components/DateFilter';
 import Predictions from '../components/Predictions';
 import './Dashboard.css';
+
+const API_URL = process.env.REACT_APP_API_URL;
 
 const Dashboard = () => {
   const { user, logout } = useAuth();
